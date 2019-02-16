@@ -50,6 +50,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # automate repetitive tasks. tute recommends ~>2.14.0 current is 2.15.0
+  gem 'guard'
+  # automate running tests.  tute recommends 4.7.2 current is 4.7.3
+  gem 'guard-rspec'
+  # tool for testing behaviour driven development.
+  gem 'guard-cucumber', '~>2.1.2'
 end
 
 group :test do
