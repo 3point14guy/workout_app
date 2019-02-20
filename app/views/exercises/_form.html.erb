@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for([current_user, @exercise], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <% if @exercise.errors.any? %>
+        <div class="card bg-light col-md-10 offset-md-1">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= pluralize(@exercise.errors.count, "error") %>
+              prohibited this workout from being saved:
+            </h5>
+            <div class="card-text">
+              <ul>
+                <% @exercise.errors.full_messages.each do |msg| %>
+                  <li>
+                    <%= msg %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+          <%= f.label :duration_in_min, "Duration (min)" %>
+          <%= f.number_field :duration_in_min, autofocus: true, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+          <%= f.label :workout, "Workout Details" %><hr>
+          <%= f.text_area :workout, placeholder: 'What did you do?', class: 'form-control', rows: "10" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+          <%= f.label :workout_date, "Workout Date" %>
+          <%= f.text_field :workout_date, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+          <div class="form-group">
+            <%= f.submit "Create Workout", class: 'btn btn-light' %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

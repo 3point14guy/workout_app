@@ -23,4 +23,5 @@ RSpec.feature 'Creating Exercise' do
     expect(current_path).to eq(user_exercise_path(@user, exercise))
     expect(exercise.user_id).to eq(@user.id)
   end
+
 end

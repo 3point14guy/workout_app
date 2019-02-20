@@ -1,1 +1,13 @@
-<%= link_to "Back", user_exercise_path(current_user)%>
+<h1 class="text-center">New Exercise for <%= current_user.full_name %></h1>
+
+<%= render 'form' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-10">
+      <%= link_to "Back", user_exercises_path(current_user), class: "btn btn-light link" %>
+    </div>
+  </div>
+</div>
