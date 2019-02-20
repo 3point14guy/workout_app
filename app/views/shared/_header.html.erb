@@ -18,6 +18,7 @@
           <p class="navbar-text">
             Signed in as <%= current_user.email %>
           </p>
+          <li><%= link_to "My Workouts", user_exercises_path(current_user) %></li>          
           <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
