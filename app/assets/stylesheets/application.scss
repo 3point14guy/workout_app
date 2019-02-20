@@ -16,6 +16,10 @@
 
 @import "bootstrap";
 
+.auth-buttons {
+    margin-left: 20px;
+}
+
 .jumbotron {
   margin-top: 5rem;
 }
@@ -29,4 +33,8 @@
 }
 #error_explanation h2 {
  font-size: 150%;
+}
+
+.navbar-brand {
+  margin-bottom: 5px;
 }
