@@ -19,7 +19,7 @@ class ExercisesController < ApplicationController
       # is the same as
       redirect_to [current_user, @exercise]
     else
-      flash[:alert] = "Exercise has not been created"
+      flash.now[:alert] = "Exercise has not been created"
       render :new
     end
   end
