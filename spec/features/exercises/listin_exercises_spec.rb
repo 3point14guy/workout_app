@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Listing Exercises" do
   before do
-    @user = User.create(email: "mail@mail.com", password: "password")
+    @user = User.create!(email: "mail@mail.com", password: "password")
     login_as(@user)
 
     @ex1 = @user.exercises.create(duration_in_min: 20,
@@ -12,6 +12,10 @@ RSpec.feature "Listing Exercises" do
     @ex2 = @user.exercises.create(duration_in_min: 30,
                                   workout: "Swimming",
                                   workout_date: 2.day.ago)
+
+    @ex3 = @user.exercises.create!(duration_in_min: 55,
+                                  workout: "Running",
+                                  workout_date: 8.day.ago)
   end
 
   scenario "shows workouts for the last 7 days" do
@@ -26,8 +30,8 @@ RSpec.feature "Listing Exercises" do
     expect(page).to have_content(@ex2.workout)
     expect(page).to have_content(@ex2.workout_date)
 
-    # expect(page).to have_content(@ex3.duration_in_min)
-    # expect(page).to have_content(@ex3.workout)
-    # expect(page).to have_content(@ex3.workout_date)
+    expect(page).not_to have_content(@ex3.duration_in_min)
+    expect(page).not_to have_content(@ex3.workout)
+    expect(page).not_to have_content(@ex3.workout_date)
   end
 end
