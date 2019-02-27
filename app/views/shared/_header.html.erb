@@ -12,13 +12,18 @@
           <span class="sr-only">(current)</span>
         </li>
       </ul>
-
+      <%= form_tag(search_dashboards_path, class: "form-inline my-2 my-lg-0", role: "search") do %>
+        <div class="">
+          <%= text_field_tag :search_name, nil, placeholder: "Search for friends", class: "form-control mr-sm-2"%>
+        </div>
+        <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0 mr-sm-2" %>
+      <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <p class="navbar-text">
             Signed in as <%= current_user.email %>
           </p>
-          <li><%= link_to "My Workouts", user_exercises_path(current_user) %></li>          
+          <li><%= link_to "My Workouts", user_exercises_path(current_user) %></li>
           <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
