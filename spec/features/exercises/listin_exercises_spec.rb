@@ -1,21 +1,16 @@
 require 'rails_helper'
+require 'support/attributes'
 
 RSpec.feature "Listing Exercises" do
   before do
-    @user = User.create!(email: "mail@mail.com", password: "password")
+    @user = User.create!(user1_attributes)
     login_as(@user)
 
-    @ex1 = @user.exercises.create(duration_in_min: 20,
-                                  workout: "Body Building",
-                                  workout_date: Date.today)
+    @ex1 = @user.exercises.create(exercise1)
 
-    @ex2 = @user.exercises.create(duration_in_min: 30,
-                                  workout: "Swimming",
-                                  workout_date: 2.day.ago)
+    @ex2 = @user.exercises.create(exercise2)
 
-    @ex3 = @user.exercises.create!(duration_in_min: 55,
-                                  workout: "Running",
-                                  workout_date: 8.day.ago)
+    @ex3 = @user.exercises.create!(old_exercise)
   end
 
   scenario "shows workouts for the last 7 days" do

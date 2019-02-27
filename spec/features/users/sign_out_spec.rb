@@ -1,8 +1,9 @@
 require 'rails_helper'
+require 'support/attributes'
 
 RSpec.feature "Sign out" do
   before do
-    @user = User.create!(email: 'name@email.com', password: 'secretest', password_confirmation: 'secretest')
+    @user = User.create!(user1_attributes)
 
     visit "/"
     click_link "Sign in"

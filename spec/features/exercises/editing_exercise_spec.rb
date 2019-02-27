@@ -1,10 +1,11 @@
 require 'rails_helper'
+require 'support/attributes'
 
 RSpec.feature "Editing Exercise" do
   before do
-    @owner = User.create!(email: "mail@mail.com", password: "password")
+    @owner = User.create!(user1_attributes)
 
-    @owner_exercise = @owner.exercises.create!(duration_in_min: 24, workout: "biking", workout_date: Date.today)
+    @owner_exercise = @owner.exercises.create!(exercise1)
     login_as(@owner)
   end
 
@@ -21,6 +22,6 @@ RSpec.feature "Editing Exercise" do
 
     expect(page).to have_content("Exercise has been updated")
     expect(page).to have_content(45)
-    expect(page).not_to have_content(24)
+    expect(page).not_to have_content(30)
   end
 end

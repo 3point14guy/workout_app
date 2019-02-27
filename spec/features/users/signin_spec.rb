@@ -1,8 +1,9 @@
 require 'rails_helper'
+require 'support/attributes'
 
 RSpec.feature "Sign in" do
   before do
-    @user = User.create!(email: 'name@email.com', password: 'secretest', password_confirmation: 'secretest')
+    @user = User.create!(user1_attributes)
   end
   scenario "with existing user" do
     visit "/"
